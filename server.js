@@ -21,9 +21,9 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs');
+// });
 
 app.use(express.static(__dirname+'/public'));
 
@@ -33,7 +33,6 @@ hbs.registerHelper('screamIt', (text) => text.toUpperCase());
 app.get('/', (req, res) => {
     res.render('home.hbs',{
         pageTitle: 'Home Page',
-        currentYear: new Date().getFullYear(),
         message: 'Weclome to my home page'
     });
 });
@@ -41,7 +40,13 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about.hbs',{
         pageTitle: 'About Page',
-        currentYear: new Date().getFullYear()
+    });
+});
+
+app.get('/project', (req, res) => {
+    res.render('project.hbs',{
+        pageTitle: 'Project Page',
+        message: 'My Portfolio'
     });
 });
 
